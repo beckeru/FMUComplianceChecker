@@ -29,14 +29,14 @@ if(MSVC)
 endif()
 
 set(FMUCHK_FMI_PLATFORM_DOC "FMI platform defines the subdirectory within FMU where binary is located")
-set(FMUCHK_FMI_PLATFORM îunknownî CACHE STRING ${FMUCHK_FMI_PLATFORM_DOC})
+set(FMUCHK_FMI_PLATFORM ‚Äùunknown‚Äù CACHE STRING ${FMUCHK_FMI_PLATFORM_DOC})
 
 IF(NOT CMAKE_BUILD_TYPE)
 	SET(CMAKE_BUILD_TYPE "Release")
 	message(STATUS "Setting build type to ${CMAKE_BUILD_TYPE}")
 ENDIF()
 
-if(FMUCHK_FMI_PLATFORM MATCHES îunknownî)
+if(FMUCHK_FMI_PLATFORM MATCHES ‚Äùunknown‚Äù)
 	if(CMAKE_HOST_WIN32) #Set to true when the host system is Windows and on cygwin.
 		set(FMI_PLATFORM win)
 	elseif(CMAKE_HOST_APPLE) #Set to true when the host system is Apple OSX. 
@@ -136,7 +136,8 @@ endif()
 
 ExternalProject_Add(
 	fmil
-	SVN_REPOSITORY "https://svn.jmodelica.org/FMILibrary/tags/2.0.3"
+#	SVN_REPOSITORY "https://svn.jmodelica.org/FMILibrary/tags/2.0.3"
+	GIT_REPOSITORY "https://github.com/svn2github/FMILibrary"
 	PREFIX "${FMUCHK_BUILD}/FMIL"
 	SOURCE_DIR "${FMUCHK_FMIL_HOME_DIR}"
 	CMAKE_CACHE_ARGS ${FMIL_SETTINGS}
